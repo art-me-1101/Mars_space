@@ -24,5 +24,33 @@ def list_prof(type):
     return render_template('base3.html', type=type, prof_list=prof_list)
 
 
+@app.route("/answer")
+@app.route("/auto_answer")
+def answer():
+    params = {
+        'title': 'Анкета',
+        'surname': 'Watny',
+        'name': 'Mark',
+        'education': 'выше среднего',
+        'profession': 'шторм марсохода',
+        'sex': 'male',
+        'motivation': 'Всегда мечтал застрять на Марсе!',
+        'ready': True,
+        'css': url_for('static', filename='css/base4.css')
+    }
+    return render_template('base4.html', **params)
+
+
+@app.route("/distribution")
+def dist():
+    params = {
+        'title': 'Размещение',
+        'user_list': ['Ридли Скотт', 'Энди Уир',
+                      'Марк Уотни', 'Венката Капур',
+                      'Тедди Сандерс', 'Шон Бин']
+    }
+    return render_template('base5.html', **params)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host="127.0.0.1")
